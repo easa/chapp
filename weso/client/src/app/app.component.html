@@ -1,0 +1,31 @@
+
+<div class="App">
+  <aside class="sidebar">
+    <section class="online-members">
+      <h2>APP</h2>
+
+    </section>
+  </aside>
+  <main class="chat-window">
+    <header class="chat-header">
+      <h1>Chat</h1>
+      <span class="participants"></span>
+    </header>
+    <section class="chat-session">
+      <ul class="message-list">
+        <li class="user-message" *ngFor="let message of messages">
+          <span>{{message.text }}</span>
+
+        </li>
+      </ul>
+    </section>
+    <footer class="chat-footer">
+      <form (ngSubmit)='sendMessage()'>
+        <!--<input placeholder="your name ... " type="text" name="sender" [(ngModel)]="senderText">-->
+
+        <input placeholder="Type a message.." type="text" name="message" [(ngModel)]="messageText">
+        <!--<input type="submit" class="btn btn-sm chat-submit-button" />-->
+      </form>
+    </footer>
+  </main>
+</div>
