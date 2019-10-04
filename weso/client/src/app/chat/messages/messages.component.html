@@ -1,0 +1,48 @@
+<div class="Chat">
+<aside class="sidebar">
+<section class="online-members">
+<h2>APP</h2>
+
+<app-senders></app-senders>
+
+</section>
+</aside>
+<main class="chat-window">
+<header class="chat-header">
+<h3 style="padding: 5px">Chat</h3>
+<span class="participants">
+  <label>User name</label>
+  <input type="text" id="username" [(ngModel)]="user" class="form-group">
+  <label>Room name</label>
+  <select name="roomInput" id="roomInput" [(ngModel)]="room">
+    <option value="one">one</option>
+    <option value="two">two</option>
+    <option value="three">three</option>
+  </select>
+  <button  class=" btn btn-success" style="margin: 5px" (click)="join()">join</button>
+</span>
+</header>
+<section class="chat-session">
+<ul class="message-list">
+<!--<li class="user-message" *ngFor="let message of messagesz" style="float:right;">-->
+<!--<span>{{message }}</span>-->
+
+  <li class="user-message" *ngFor="let message of messageArray" style="float:left;">
+    <span><strong> {{ message.user}} :</strong> {{ message.message}}</span>
+
+  <!--<router-outlet></router-outlet>-->
+
+</li>
+
+</ul>
+</section>
+
+
+  <footer class="chat-footer">
+<form (ngSubmit)='sendMessage()'>
+  <input placeholder="Type a message.." type="text" name="message" [(ngModel)]="messageText">
+
+</form>
+</footer>
+</main>
+</div>

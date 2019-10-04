@@ -1,0 +1,13 @@
+<div class="row" style="color: red">
+  <div class="col-ms-12" style="padding-left: 45px;width: 100%" >
+    <a style="cursor: pointer;" class="list-group-item clearfix" [routerLink]="[index]" routerLinkActive="active">
+      <div class="pull-right" style="float: left;">
+        <img [src]="sender.imagePath" alt="" class="image-responsive" style="max-height :70px;max-width: 70px;border-radius: 50%;">
+      </div>
+      <div class="pull-left" style="position: relative;float: right">
+        <p class="list-group-item-heading" style="font-size: 15px;">{{ sender.name}}</p>
+        <p class="list-group-item-text" style="font-size: 12px">{{sender.lastms}} </p>
+      </div>
+    </a>
+  </div>
+</div>
