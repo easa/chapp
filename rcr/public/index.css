@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #111 linear-gradient(19deg, #111, #333) center 100%/100% no-repeat fixed;
+  color: #1e758d;
+  text-align: center
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.sidebar{
+  width: 80px;
+  height: 100%;
+  background: #111;
+  position: absolute;
+  top: 0;
+  padding: 15px;
+}
+.clicable{
+  cursor: pointer;
+  transition-duration: .1s;
+}.clicable:hover{
+  transform: scale(1.2);
+  transition-duration: .1s;
+}
+.loginform > input{
+  background : transparent;
+  border: none;
+  border-bottom: 2px solid rgb(61, 82, 109);
+  padding: 10px;
+  text-align: center;
+  color: white;
+  outline: none;
+  transition-duration: .2s;
+  width: 150px
+}
+.loginform > input:focus{
+  transition-duration: .2s;
+  width: 200px
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.inputBox > form > button {
+  background: #000;
+  border: 1px solid #888;
+  color: #888;
+  padding: 10px;
+  transition-duration: .2s
+}.inputBox > form > button:disabled {
+  border: 1px solid #000;
+  transition-duration: .2s
+}
