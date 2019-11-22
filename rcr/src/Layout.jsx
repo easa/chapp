@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import LoginForm from "./auth/LoginForm"
+import LoginForm from "./auth/Login"
 import ChatContainer from './chat'
 
 import io from 'socket.io-client'
@@ -27,10 +27,10 @@ export default class Layout extends Component {
     }
     setUser = (user) => { // set the user in state
         const { socket } = this.state
-        socket.emit(evt.user_connected, (e) => { console.log(e.message) })
+        socket.emit(evt.user_connected, user, (e) => { console.log(e.message) })
         this.setState({ user })
     }
-    logout = () => { // set state's user to nulll
+    logout = () => { // set state's user to null
         const { socket } = this.state
         socket.emit(evt.logout, this.state.user.name, (e) => { console.log(e.message) })
         this.setState({ user: null })

@@ -12,45 +12,45 @@ export default class MessageInput extends Component {
       isTyping: false
     }
   }
-  stopCheckingTyping() {
+  stopCheckingTyping = () => {
     if (!this.typingInterval) return 0
     clearInterval(this.typingInterval)
     this.props.sendTyping(false)
   }
-  startCheckingTyping() {
+  startCheckingTyping = () => {
     this.typingInterval = setInterval(() => {
       if ((Date.now() - this.lastupdate) < 500) return 0
       this.setState({ isTyping: false })
       this.stopCheckingTyping()
     }, 500);
   }
-  sendTyping = e => {
+  sendTyping = () => {
     this.lastupdate = Date.now()
     if (this.state.isTyping) return 0
     this.setState({ isTyping: true })
     this.props.sendTyping(true)
     this.startCheckingTyping()
   }
-  sendMessage = e => {
-    this.props.sendMessage(this.state.message)
+  sendMessage = (msg) => {
+    this.props.sendMessage(msg)
   }
   submit = e => {
     e.preventDefault()
-    this.sendMessage()
-    this.setstate({ message: '' })
+    this.sendMessage(this.state.message)
+    this.setState({ message: '' })
   }
   componentWillUnmount() {
     this.stopCheckingTyping()
   }
   render() {
-    const { message } = this.state
+    let { message } = this.state
     return (
       <div className="inputBox">
         <form onSubmit={this.submit}>
           <input value={message} ref={'messageinput'} type="text" autoComplete={'off'} placeholder="type message..."
             onKeyUp={e => e.keyCode !== 13 && this.sendTyping()}
-            onChange={target => this.setState({ message: target.value })} />
-          <button type="submit" disabled={() => message.length < 1}>send</button>
+            onChange={e => { this.setState({ message: e.target.value }) }} />
+          <button type="submit" onClick={this.submit} disabled={() => message.length < 1}>send</button>
         </form>
       </div >
     )

@@ -14,14 +14,57 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+input{
+  background : rgba(0,0,0,0);
+  border: none;
+  padding: 10px;
+  text-align: center;
+  color: white;
+  outline: none;
+  transition-duration: .2s;
+}
 
-.sidebar{
-  width: 80px;
-  height: 100%;
-  background: #111;
-  position: absolute;
+button {
+  background: rgba(51, 51, 51, 0.2);
+  border: none;
+  color: #888;
+  padding: 10px;
+  outline: none;
+  transition-duration: .2s
+}
+
+.navbar{
+  border-bottom: 2px solid;
+  overflow-y: hidden;
+  height: 45px;
+  text-align: left;
+}
+.navbar > .logout,
+.navbar > .currentUser,
+.usersTable > div{
+  font-size: 13px;
+  word-break: break-all;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  border: 1px solid;
+  margin: 2px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
   top: 0;
-  padding: 15px;
+  left: 40px;
+}
+.usersTable{
+  display: inline-block;
+}
+.usersTable > div{
+  border: 1px solid #888;
+  transition-duration: .2s;
+}
+.usersTable > .active{
+  border: 1px solid #ee61fb;
+  border-bottom: 1px solid #8d1717;
 }
 .clicable{
   cursor: pointer;
@@ -30,22 +73,22 @@ code {
   transform: scale(1.2);
   transition-duration: .1s;
 }
+.login{
+  bottom: 30%;
+  position: absolute;
+  width: 100%;
+}
 .loginform > input{
-  background : transparent;
-  border: none;
-  border-bottom: 2px solid rgb(61, 82, 109);
-  padding: 10px;
-  text-align: center;
-  color: white;
-  outline: none;
-  transition-duration: .2s;
+  border-bottom: 2px solid #1e758d;
   width: 150px
 }
 .loginform > input:focus{
-  transition-duration: .2s;
   width: 200px
 }
-
+.loginform > button{
+  margin-top: 20px;
+  border: transparent;
+}
 .App {
   text-align: center;
 }
@@ -79,13 +122,63 @@ code {
     transform: rotate(360deg);
   }
 }
+.container> .thread{
+  bottom: 50px;
+  position: absolute;
+  max-height: 80%;
+  overflow-y: auto;
+  width: 100%;
+}
+.container> .thread> div{
+  color: #ccc;
+  border: 1px dashed #333;
+  text-align: left;
+  text-indent: 10px;
+  background: rgba(49, 56, 66, 0.45);
+  border-radius: 25px;
+  margin: 7px 65px 0px 9px;
+  padding: 12px 30px 15px 35px;
+}
+.container> .thread> .right {
+  margin: 7px 9px 0px 65px;
+  padding: 12px 35px 15px 30px;
+}
+
+.container  .name, .container  .time{
+  font-size: 10px;
+  text-align: right;
+  color: #888;
+}
+
+.inputBox{
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+.inputBox::before{
+  content: "";
+  position: absolute;
+  width: 0%;
+  top:0;
+  left: 50%;
+  border-top: 1px solid #1e758d;
+  transition-duration: .2s;
+}
+.inputBox:hover::before{
+  left: 0;
+  width: 100%;
+  transition-duration: .2s;
+}
+.inputBox > form > input{
+  position: relative;
+  width:80%;
+}
 .inputBox > form > button {
   background: #000;
-  border: 1px solid #888;
+  border: 1px solid rgb(95, 95, 95);
   color: #888;
   padding: 10px;
   transition-duration: .2s
 }.inputBox > form > button:disabled {
-  border: 1px solid #000;
-  transition-duration: .2s
+  border: none;
 }

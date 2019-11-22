@@ -6,23 +6,24 @@ export default class LoginForm extends Component {
         this.state = { nickname: "", error: "" }
     }
     setError = msg => this.setState({ msg })
-    setUser = ({ user, isUser }) => {
-        if (isUser) return this.setError('user exists!')
-        console.log(user)
-        this.props.setUser(user)
+    setUser = ({ error, user, userList }) => {
+        if (error) this.setError(error)
+        else this.props.setUser(user)
     }
-    handleChange = e => this.setState({ nickname: e.target.value })
-    handleSubmit = (e) => {
+    login = (e) => {
         e.preventDefault()
         const { socket } = this.props
         const { nickname } = this.state
         socket.emit(evt.verify_user, nickname, this.setUser)
     }
+    // onSubmit={this.login}
     render() {
         const { nickname } = this.state
         return (
             <div className="login">
-                <form onSubmit={this.handleSubmit} className="loginform">
+                <div>{this.state.msg}</div>
+                <br />
+                <form onSubmit={this.login} className="loginform">
                     <label htmlFor="nickname">
                         <h2>pick a nickname?</h2>
                     </label>
@@ -30,10 +31,10 @@ export default class LoginForm extends Component {
                         type="text"
                         id="nickname"
                         value={nickname}
-                        onChange={this.handleChange}
+                        onChange={e => this.setState({ nickname: e.target.value })}
                         placeholder={'nickname...'} />
+                    <br /><button type="submit" onClick={this.login}>login</button>
                 </form>
-                <div>{this.state.msg}</div>
             </div>
         )
     }
