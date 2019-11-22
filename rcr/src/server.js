@@ -6,8 +6,9 @@ const chatHandler = require('./chat/chat.server')
 
 io.on('connection', socket => {
     console.log(`socket '${socket.id}' just connected!`)
-    authHandler(socket) // should be first because of adding user to socket
-    chatHandler(socket)
+    var currentuser = { mm: 'mm' }
+    authHandler(socket, currentuser)
+    chatHandler(socket, currentuser)
 })
 
 app.listen(port, () => {

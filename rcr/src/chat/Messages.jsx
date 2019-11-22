@@ -16,11 +16,10 @@ export default class Messages extends Component {
 	}
 	render() {
 		const { messages, user, typingUsers } = this.props
-		console.log(messages)
 		return (
 			<div className="container">
 				<div className="thread">{
-					messages.map(msg => msg ? <div key={msg.id} className={`msg ${msg.sender === user.name && 'right'}`}>
+					messages.map(msg => msg ? <div key={msg.id} className={`msg ${msg.sender === user.name ? 'right' : ''}`}>
 						<div className="name">{msg.sender}</div>
 						<div className="text">{msg.text}</div>
 						<div className="time">{msg.time}</div>

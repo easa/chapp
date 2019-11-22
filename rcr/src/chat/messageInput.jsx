@@ -36,6 +36,7 @@ export default class MessageInput extends Component {
   }
   submit = e => {
     e.preventDefault()
+    if (this.state.message.length < 1) return 0
     this.sendMessage(this.state.message)
     this.setState({ message: '' })
   }

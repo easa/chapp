@@ -2,7 +2,7 @@ const io = require('../server').io
 const evt = require('../rsx/event')
 const userClass = require('./user.model')
 
-module.exports = function (socket) {
+module.exports = function (socket, currentuser) {
 
 	socket.on(evt.verify_user, (nickname, callback) => {
 		let onlineUsers = (new userClass()).find(nickname)
@@ -10,6 +10,7 @@ module.exports = function (socket) {
 			userList: (new userClass()).find(), error: `${nickname} already exists`
 		})
 		let user = new userClass(nickname)
+		Object.assign(currentuser, user.toJson())
 		return callback((user.name
 			? { user: user.toJson() }
 			: { user: undefined, error: 'name policy: start with word, can contain word, number, hyphen, atleast 4, up to 10 words!' }))

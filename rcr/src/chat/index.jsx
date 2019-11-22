@@ -25,13 +25,11 @@ export default class ChatContainer extends Component {
 		const { chats } = this.state
 		const newChats = reset ? [chat] : [...chats, chat]
 		this.setState({ chats: newChats })
-		console.log(chat.id)
 		socket.on(`${evt.message_recieved}-${chat.id}`, this.addMessageToChat(chat.id))
-		//socket.on(`${evt.typing}-${chat.id}`, () => this.addMessageToChat(chat.id))
+		socket.on(`${evt.typing}-${chat.id}`, () => this.addMessageToChat(chat.id))
 	}
 	addMessageToChat(chatId) {
 		return message => {
-			console.log('iiiiiiii')
 			const { chats } = this.state
 			const newChats = chats.map(chat => {
 				if (chat && chat.id === chatId)

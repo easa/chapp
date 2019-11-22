@@ -31,7 +31,8 @@ function user(nickname) {
     || !nickname.match(/^\w[\w_-\d]{3,9}$/gi)) return undefined
   this.name = nickname
   this.id = uuidv4()
-  this.loginDate = new Date()
+  let now = new Date()
+  this.loginDate = `${now.getHours()}:${now.getMinutes()}`
   userList.push(this.toJson())
   currentUser = this.toJson()
   return this

@@ -4,20 +4,25 @@ const { createMessage, createChat } = require('./factory')
 const chatClass = require('./chat.model')
 const msgModel = require('./message.model')
 const userClass = require('../auth/user.model')
-module.exports = function (socket) {
+module.exports = function (socket, currentUser) {
 
 	const sendMessageToChat = (sender) => ({ chatId, message }) => {
 		// FIXME: couldn't use the msgmodel or factory function.. search why
-		let msg = { id: '12', text: message, sender: sender, time: '23:32' } // msgModel({ text, sender }) // createMessage({ text, sender })
+		let now = new Date()
+		let datetime = `${now.getHours()}:${now.getMinutes()}`
+		let msg = { id: chatId, text: message, sender: sender, time: datetime } // msgModel({ text, sender }) // createMessage({ text, sender })
 		io.emit(`${evt.message_recieved}-${chatId}`, msg)
 	}
 
 	// FIXME: this current user thing is not right!
-	let currentUser = (new userClass()).getCurrentUser()
-	currentUser = currentUser && currentUser.name
-	const sendfromuser = sendMessageToChat(currentUser)
-	socket.on(evt.message_sent, (chatId, message) => sendfromuser(chatId, message))
-
+	//const sendfromuser = sendMessageToChat(currentUser.name)
+	socket.on(evt.message_sent, ({ chatId, message }) => {
+		let now = new Date()
+		let datetime = `${now.getHours()}:${now.getMinutes()}`
+		let msg = { id: chatId, text: message, sender: currentUser.name, time: datetime } 
+		io.emit(`${evt.message_recieved}-${chatId}`, msg)
+		// sendfromuser(chatId, message)
+	})
 
 	const sendTypingToChat = (sender) =>
 		(chatId, isTyping) =>
