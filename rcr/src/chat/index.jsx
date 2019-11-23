@@ -4,6 +4,7 @@ import Messages from './Messages'
 import MessageInput from './messageInput'
 import ChatHeading from './Headline'
 import evt from '../rsx/event'
+import { io } from '../server'
 
 export default class ChatContainer extends Component {
 	constructor(props) {
@@ -49,6 +50,11 @@ export default class ChatContainer extends Component {
 	setTyping = (chatId, isTyping) => {
 		const { socket } = this.props
 		socket.emit(evt.typing, { chatId, isTyping })
+		// const { activeChat } = this.state
+		// io.on(`${evt.typing}-${chatId}`, (tu) => {
+		// 	activeChat.typingUsers = [tu]
+		// 	this.setState({ activeChat })
+		// })
 	}
 	render() {
 		const { user, logout } = this.props

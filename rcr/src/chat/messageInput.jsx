@@ -26,8 +26,7 @@ export default class MessageInput extends Component {
   }
   sendTyping = () => {
     this.lastupdate = Date.now()
-    if (this.state.isTyping) return 0
-    this.setState({ isTyping: true })
+    if (this.state.isTyping) this.setState({ isTyping: true })
     this.props.sendTyping(true)
     this.startCheckingTyping()
   }

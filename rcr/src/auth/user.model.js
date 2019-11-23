@@ -1,6 +1,5 @@
 const uuidv4 = require('uuid/v4');
 let userList = []
-let currentUser = undefined
 module.exports = user
 function userProto() {
   this.toJson = function () {
@@ -22,9 +21,7 @@ function userProto() {
     let item = this.find(options)
     let idx = userList.indexOf(item)
     delete userList[idx]
-    currentUser = undefined
   }
-  this.getCurrentUser = function () { return currentUser }
 }
 function user(nickname) {
   if (!nickname || typeof nickname !== 'string'
@@ -34,7 +31,6 @@ function user(nickname) {
   let now = new Date()
   this.loginDate = `${now.getHours()}:${now.getMinutes()}`
   userList.push(this.toJson())
-  currentUser = this.toJson()
   return this
 }
 user.prototype = new userProto()

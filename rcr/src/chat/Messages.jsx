@@ -6,7 +6,7 @@ export default class Messages extends Component {
 		this.scrollDown = this.scrollDown.bind(this)
 	}
 	scrollDown() {
-		// this.refs.scrollTop = this.refs.scrollHeight
+	  this.refs.scrollTop = this.refs.scrollHeight
 	}
 	componentDidMount() {
 		this.scrollDown()

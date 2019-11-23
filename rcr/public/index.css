@@ -41,7 +41,7 @@ button {
 }
 .navbar > .logout,
 .navbar > .currentUser,
-.usersTable > div{
+.navbar > .user{
   font-size: 13px;
   word-break: break-all;
   text-align: center;
@@ -55,14 +55,11 @@ button {
   top: 0;
   left: 40px;
 }
-.usersTable{
-  display: inline-block;
-}
-.usersTable > div{
+.navbar > .user{
   border: 1px solid #888;
   transition-duration: .2s;
 }
-.usersTable > .active{
+.navbar > .user.active{
   border: 1px solid #ee61fb;
   border-bottom: 1px solid #8d1717;
 }
