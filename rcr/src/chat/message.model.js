@@ -1,12 +1,9 @@
 const uuidv4 = require('uuid/v4');
-module.exports = (text, sender) => {
-  console.log(this.arguments)
-  console.log('ddddddddddd', text, sender)
+
+module.exports = (chatId, sender, text) => {
+  let now = new Date()
+  let datetime = `${now.getHours()}:${now.getMinutes()}`
+  let msg = { id: uuidv4(), chatId, text, sender, time: datetime }
   if (!text || typeof text !== 'string') return undefined
-  return {
-    text,
-    id: uuidv4(),
-    sentDate: new Date(),
-    sender
-  }
+  return msg
 }

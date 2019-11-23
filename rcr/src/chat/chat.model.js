@@ -1,11 +1,8 @@
 const uuidv4 = require('uuid/v4');
-module.exports = chat
-function chat(title) {
-  if (!title || typeof title !== 'string'
-    || !title.match(/^\w[\w_-\d]{3,9}$/gi)) return undefined
-  return {
-    title,
-    id: uuidv4(),
-    sentDate: new Date()
-  }
+
+module.exports = ({ name, id = uuidv4, messages = [], users = [], typingUsers = [] }) => {
+  let chat = { id, name, messages, users, typingUsers }
+  if (!name || typeof name !== 'string') return undefined
+  return chat
+
 }

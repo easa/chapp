@@ -11,7 +11,7 @@ export default class Navbar extends Component {
 					{chats.map((chat) => {
 						if (!chat.name) return ''
 						const lastMessage = chat.messages[chat.messages.length - 1]
-						const user = (chat.user.find(name => name !== this.props.name) || { name: 'community' })
+						const user = (chat.users.find(name => name !== this.props.name) || { name: 'community' })
 						return (
 							<div key="chat.id" className={`user ${activeChat && activeChat.id === chat.id && 'active'}`}
 								onClick={() => { setActiveChat(chat) }} >

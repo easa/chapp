@@ -149,6 +149,9 @@ button {
   text-align: right;
   color: #888;
 }
+.container .text{
+  word-break: break-all;
+}
 
 .inputBox{
   bottom: 0;
