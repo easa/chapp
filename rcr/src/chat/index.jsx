@@ -4,7 +4,7 @@ import Messages from './Messages'
 import MessageInput from './messageInput'
 import ChatHeading from './Headline'
 import evt from '../rsx/event'
-import { io } from '../server'
+// import { io } from '../server'
 
 export default class ChatContainer extends Component {
 	constructor(props) {
