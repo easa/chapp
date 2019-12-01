@@ -1,0 +1,184 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #111 linear-gradient(19deg, #111, #333) center 100%/100% no-repeat fixed;
+  color: #1e758d;
+  text-align: center
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+input{
+  background : rgba(0,0,0,0);
+  border: none;
+  padding: 10px;
+  text-align: center;
+  color: white;
+  outline: none;
+  transition-duration: .2s;
+}
+
+button {
+  background: rgba(51, 51, 51, 0.2);
+  border: none;
+  color: #888;
+  padding: 10px;
+  outline: none;
+  transition-duration: .2s
+}
+
+.navbar{
+  border-bottom: 2px solid;
+  overflow-y: hidden;
+  height: 45px;
+  text-align: left;
+}
+.navbar > .logout,
+.navbar > .currentUser,
+.navbar > .user{
+  font-size: 13px;
+  word-break: break-all;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  border: 1px solid;
+  margin: 2px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  top: 0;
+  left: 40px;
+}
+.navbar > .user{
+  border: 1px solid #888;
+  transition-duration: .2s;
+}
+.navbar > .user.active{
+  border: 1px solid #ee61fb;
+  border-bottom: 1px solid #8d1717;
+}
+.clicable{
+  cursor: pointer;
+  transition-duration: .1s;
+}.clicable:hover{
+  transform: scale(1.2);
+  transition-duration: .1s;
+}
+.login{
+  bottom: 30%;
+  position: absolute;
+  width: 100%;
+}
+.loginform > input{
+  border-bottom: 2px solid #1e758d;
+  width: 150px
+}
+.loginform > input:focus{
+  width: 200px
+}
+.loginform > button{
+  margin-top: 20px;
+  border: transparent;
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.container> .thread{
+  bottom: 50px;
+  position: absolute;
+  max-height: 80%;
+  overflow-y: auto;
+  width: 100%;
+}
+.container> .thread> div{
+  color: #ccc;
+  border: 1px dashed #333;
+  text-align: left;
+  text-indent: 10px;
+  background: rgba(49, 56, 66, 0.45);
+  border-radius: 25px;
+  margin: 7px 65px 0px 9px;
+  padding: 12px 30px 15px 35px;
+}
+.container> .thread> .right {
+  margin: 7px 9px 0px 65px;
+  padding: 12px 35px 15px 30px;
+}
+
+.container  .name, .container  .time{
+  font-size: 10px;
+  text-align: right;
+  color: #888;
+}
+.container .text{
+  word-break: break-all;
+}
+
+.inputBox{
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+.inputBox::before{
+  content: "";
+  position: absolute;
+  width: 0%;
+  top:0;
+  left: 50%;
+  border-top: 1px solid #1e758d;
+  transition-duration: .2s;
+}
+.inputBox:hover::before{
+  left: 0;
+  width: 100%;
+  transition-duration: .2s;
+}
+.inputBox > form > input{
+  position: relative;
+  width:80%;
+}
+.inputBox > form > button {
+  background: #000;
+  border: 1px solid rgb(95, 95, 95);
+  color: #888;
+  padding: 10px;
+  transition-duration: .2s
+}.inputBox > form > button:disabled {
+  border: none;
+}
